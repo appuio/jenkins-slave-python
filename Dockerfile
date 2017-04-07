@@ -19,7 +19,7 @@ RUN set -x \
     && make altinstall \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
-    && yum remove gcc wget \
+    && yum remove -y gcc wget zlib \
     && yum clean all -y
 
 # TODO: install oc if needed?
