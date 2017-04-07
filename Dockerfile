@@ -17,7 +17,8 @@ RUN set -x \
     && cd Python-${PYTHON_VERSION} \
     && ./configure \
     && make altinstall \
-    && rm Python-${PYTHON_VERSION}.tgz \
+    && cd .. \
+    && rm -rf Python-${Python_VERSION} \
     && yum remove gcc wget \
     && yum clean all -y
 
