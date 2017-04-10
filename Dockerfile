@@ -16,7 +16,7 @@ RUN set -x \
     && make altinstall \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
-    && yum remove -y $INSTALL_PKGS
+    && yum remove -y $INSTALL_PKGS \
     && yum clean all
 
 # install virtualenv
