@@ -6,11 +6,8 @@ ENV PYTHON_VERSION 3.6.1
 
 # install python
 RUN set -x \
-    && yum install -y \
-        gcc \
-        make \
-        wget \
-        zlib-devel \
+    && INSTALL_PKGS="gcc make wget zlib-devel" \
+    && yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS \
     && cd /tmp \
     && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz \
     && tar xzf Python-${PYTHON_VERSION}.tgz \
@@ -19,12 +16,12 @@ RUN set -x \
     && make altinstall \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
-    && yum remove -y gcc wget zlib-devel
-    # && yum clean all -y
+    && yum remove -y $INSTALL_PKGS
+    && yum clean all
 
 # install virtualenv
-RUN set -x \
-    && pip install virtualenv
+# RUN set -x \
+#    && pip install virtualenv
 
 # TODO: install oc if needed?
 # TODO: ...
