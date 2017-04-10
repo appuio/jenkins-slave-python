@@ -19,8 +19,12 @@ RUN set -x \
     && make altinstall \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
-    && yum remove -y gcc wget zlib \
-    && yum clean all -y
+    && yum remove -y gcc wget zlib
+    # && yum clean all -y
+
+# install virtualenv
+RUN set -x \
+    && pip install virtualenv
 
 # TODO: install oc if needed?
 # TODO: ...
