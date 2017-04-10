@@ -19,7 +19,7 @@ RUN set -x \
     && make altinstall \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
-    && yum remove -y gcc wget zlib
+    && yum remove -y gcc wget zlib-devel
     # && yum clean all -y
 
 # install virtualenv
