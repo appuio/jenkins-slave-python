@@ -6,6 +6,7 @@ ENV PYTHON_VERSION 3.6.1
 
 # install python
 RUN set -x \
+    && chown -R root:root /home/jenkins \
     && INSTALL_PKGS="gcc make wget zlib-devel" \
     && yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS \
     && cd /tmp \
@@ -17,7 +18,8 @@ RUN set -x \
     && cd .. \
     && rm -rf Python-${Python_VERSION} \
     && yum remove -y $INSTALL_PKGS \
-    && yum clean all
+    && yum clean all \
+    && chown 1001:0 /home/jenkins
 
 # install virtualenv
 # RUN set -x \
