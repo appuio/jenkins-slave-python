@@ -21,9 +21,6 @@ RUN set -x \
     && yum clean all \
     && chown 1001:0 /home/jenkins
 
-# install virtualenv
+# TODO: setup virtualenv?
 # RUN set -x \
 #    && pip install virtualenv
-
-# TODO: install oc if needed?
-# TODO: ...
